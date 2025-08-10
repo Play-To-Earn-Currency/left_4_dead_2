@@ -158,8 +158,11 @@ public void MarkerReached(Event event, const char[] name, bool dontBroadcast)
     int byClient = GetClientOfUserId(userid);
 
     PrintToServer("[PTE] Marker Reached");
-    PrintToServer("[PTE] userid: %d", byClient);
-    PrintToServer("[PTE] marker: %d", marker);
+    if (shouldDebug)
+    {
+        PrintToServer("[PTE] userid: %d", byClient);
+        PrintToServer("[PTE] marker: %d", marker);
+    }
 
     int onlinePlayers[MAXPLAYERS];
     GetOnlinePlayers(onlinePlayers, sizeof(onlinePlayers));
@@ -213,15 +216,25 @@ public void RoundEnd(Event event, const char[] name, bool dontBroadcast)
         return;
     }
 
+    // Chapter ended
+    if (reason == 6)
+    {
+        PrintToServer("[PTE] Round ended ignored, reason: chapter ended");
+        return;
+    }
+
     char message[128];
     event.GetString("message", message, sizeof(message));
     float time = event.GetFloat("time");
 
     PrintToServer("[PTE] Round ended");
-    PrintToServer("[PTE] Winner: %d", winner);    // Does not work for some god damn reason
-    PrintToServer("[PTE] Reason: %d", reason);
-    PrintToServer("[PTE] Message: %s", message);
-    PrintToServer("[PTE] Time: %s", time);
+    if (shouldDebug)
+    {
+        PrintToServer("[PTE] Winner: %d", winner);    // Does not work for some god damn reason
+        PrintToServer("[PTE] Reason: %d", reason);
+        PrintToServer("[PTE] Message: %s", message);
+        PrintToServer("[PTE] Time: %s", time);
+    }
 
     int onlinePlayers[MAXPLAYERS];
     GetOnlinePlayers(onlinePlayers, sizeof(onlinePlayers));
@@ -255,10 +268,13 @@ public void RoundEnd(Event event, const char[] name, bool dontBroadcast)
         if (!IsValidClient(client)) continue;
 
         int team = GetClientTeam(client);
-        if (team == winner) IncrementWallet(client, pteEarnOnRoundWin, pteShowOnRoundWin, "PTE , by winning");
-        else IncrementWallet(client, pteEarnOnRoundLose, pteShowOnRoundLose, "PTE , by losing");
+        if (team == winner) IncrementWallet(client, pteEarnOnRoundWin, pteShowOnRoundWin, " PTE , by winning");
+        else IncrementWallet(client, pteEarnOnRoundLose, pteShowOnRoundLose, " PTE , by losing");
 
-        PrintToServer("[PTE] Player: %d, team: %d", client, team);
+        if (shouldDebug)
+        {
+            PrintToServer("[PTE] Player: %d, team: %d", client, team);
+        }
     }
 }
 
@@ -279,7 +295,8 @@ public void OnPlayerChangeTeam(Event event, const char[] name, bool dontBroadcas
         return;
     }
 
-    PrintToServer("[PTE] %d changed their team: %d, previously: %d", client, team, oldTeam);
+    if (shouldDebug)
+        PrintToServer("[PTE] %d changed their team: %d, previously: %d", client, team, oldTeam);
 
     if (oldTeam == 0)
     {
