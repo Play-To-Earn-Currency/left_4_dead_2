@@ -11,11 +11,11 @@ public Plugin myinfo =
 };
 
 // Configurations
-static char pteEarnOnRoundLose[20] = "100000000000000000";
+static char pteEarnOnRoundLose[40] = "100000000000000000";
 static char pteShowOnRoundLose[20] = "0.1";
-static char pteEarnOnMarker[20]    = "100000000000000000";
+static char pteEarnOnMarker[40]    = "100000000000000000";
 static char pteShowOnMarker[20]    = "0.1";
-static char pteEarnOnRoundWin[20]  = "300000000000000000";
+static char pteEarnOnRoundWin[40]  = "300000000000000000";
 static char pteShowOnRoundWin[20]  = "0.3";
 
 bool        shouldDebug            = false;

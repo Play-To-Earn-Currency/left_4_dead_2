@@ -11,9 +11,9 @@ public Plugin myinfo =
 };
 
 // Configurations
-static char pteEarnOnSurvivalTimestamp[20] = "200000000000000000";
+static char pteEarnOnSurvivalTimestamp[40] = "200000000000000000";
 static char pteShowOnSurvivalTimestamp[20] = "0.2";
-static char pteEarnOnInfectedTimestamp[20] = "100000000000000000";
+static char pteEarnOnInfectedTimestamp[40] = "100000000000000000";
 static char pteShowOnInfectedTimestamp[20] = "0.1";
 
 int         timeStampSurvived;
