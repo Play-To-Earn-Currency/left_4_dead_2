@@ -33,9 +33,9 @@ public void OnPluginStart()
             shouldDebug = true;
         }
 
-        if (StrContains(commandLine, "-pteSurvivalVersus 1") == -1)
+        if (StrContains(commandLine, "-pteSurvival 1") == -1)
         {
-            PrintToServer("[PTE Default] Will not be initialized, 'pteSurvivalVersus' is not '1'");
+            PrintToServer("[PTE Survival] Will not be initialized, 'pteSurvival' is not '1'");
             return;
         }
 
@@ -56,12 +56,12 @@ public void OnPluginStart()
                 strcopy(configPath, sizeof(configPath), commandLine[start]);
                 configPath[length] = '\0';
 
-                PrintToServer("[PTE Default] Config path: %s", configPath);
+                PrintToServer("[PTE Survival] Config path: %s", configPath);
             }
             else
             {
                 configPath = "addons/sourcemod/configs/play_to_earn_survivalversus.cfg";
-                PrintToServer("[PTE Default] No -configPath provided using default %s", configPath);
+                PrintToServer("[PTE Survival] No -configPath provided using default %s", configPath);
             }
         }
     }
