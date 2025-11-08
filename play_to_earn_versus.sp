@@ -34,7 +34,7 @@ public void OnPluginStart()
 
         if (StrContains(commandLine, "-pteVersus 1") == -1)
         {
-            PrintToServer("[PTE Default] Will not be initialized, 'pteVersus' is not '1'");
+            PrintToServer("[PTE Versus] Will not be initialized, 'pteVersus' is not '1'");
             return;
         }
 
@@ -55,12 +55,12 @@ public void OnPluginStart()
                 strcopy(configPath, sizeof(configPath), commandLine[start]);
                 configPath[length] = '\0';
 
-                PrintToServer("[PTE Default] Config path: %s", configPath);
+                PrintToServer("[PTE Versus] Config path: %s", configPath);
             }
             else
             {
                 configPath = "addons/sourcemod/configs/play_to_earn_versus.cfg";
-                PrintToServer("[PTE Default] No -configPath provided using default %s", configPath);
+                PrintToServer("[PTE Versus] No -configPath provided using default %s", configPath);
             }
         }
     }
