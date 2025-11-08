@@ -219,7 +219,7 @@ public void RoundEnd(Event event, const char[] name, bool dontBroadcast)
     {
         PrintToServer("[PTE] Reason: %d", reason);
         PrintToServer("[PTE] Message: %s", message);
-        PrintToServer("[PTE] Time: %s", time);
+        PrintToServer("[PTE] Time: %f", time);
     }
 }
 

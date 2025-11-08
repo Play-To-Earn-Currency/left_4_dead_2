@@ -163,7 +163,7 @@ public void RoundEnd(Event event, const char[] name, bool dontBroadcast)
         PrintToServer("[PTE] Winner: %d", winner);    // Does not work for some god damn reason
         PrintToServer("[PTE] Reason: %d", reason);
         PrintToServer("[PTE] Message: %s", message);
-        PrintToServer("[PTE] Time: %s", time);
+        PrintToServer("[PTE] Time: %f", time);
     }
 
     int onlinePlayers[MAXPLAYERS];
